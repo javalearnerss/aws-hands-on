@@ -13,36 +13,27 @@ import { UserManagementComponent } from './components/user-management/user-manag
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-  },
-  {
-    path: 'home',
-    component: HomeComponent
+    component: OpsDashboardComponent,
   },
   {
     path: 'ops-dashboard',
-    component: OpsDashboardComponent,
-    data: { role: 'ADMIN' }
+    component: OpsDashboardComponent
   },
   {
     path: 'exchange',
-    component: ExchangeComponent,
-    data: { role: 'ADMIN' }
+    component: ExchangeComponent
   },
   {
     path: 'trade-enricher',
-    component: TradeEnricherComponent,
-    data: { role: 'ADMIN' }
+    component: TradeEnricherComponent
   },
   {
     path: 'trade-processor',
-    component: TradeProcessorComponent,
-    data: { role: 'ADMIN' }
+    component: TradeProcessorComponent
   },
   {
     path: 'refdata-provider',
-    component: TradeRefDataComponent,
-    data: { role: 'ADMIN' }
+    component: TradeRefDataComponent
   },
   {
     path: 'users',
@@ -64,7 +55,6 @@ export const routes: Routes = [
         component: EditUserComponent,
         data: { role: 'ADMIN' }
       }
-    ],
-    data: { role: 'ADMIN' }
+    ]
   }
 ];

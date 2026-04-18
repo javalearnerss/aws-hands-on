@@ -40,7 +40,7 @@ export class ExchangeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateFeedStatus();
-   // this.startAutoRefresh();
+    this.startAutoRefresh();
   }
 
   ngOnDestroy(): void {

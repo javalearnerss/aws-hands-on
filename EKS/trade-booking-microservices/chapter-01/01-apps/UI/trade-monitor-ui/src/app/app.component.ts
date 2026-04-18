@@ -17,16 +17,9 @@ export class AppComponent {
 
   showHeader = false;
 
-  constructor(private router: Router) {
+  constructor() {
 
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: any) => {
-
-        const hiddenRoutes = ['/', '/home'];
-
-        this.showHeader = !hiddenRoutes.includes(event.urlAfterRedirects);
-      });
+   
 
   }
 
