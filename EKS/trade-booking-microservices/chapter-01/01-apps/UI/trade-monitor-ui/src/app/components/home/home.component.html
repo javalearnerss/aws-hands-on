@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trade Monitor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <style>
+    body {
+      background: #f4f6f9;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+      border-radius: 28px;
+      padding: 80px;
+      margin-top: 70px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .status-pill {
+      background: rgba(255,255,255,0.7);
+      padding: 12px 22px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      font-size: 14px;
+      margin: 0 10px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .btn-login {
+      border-radius: 14px;
+      padding: 14px 40px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="hero-section">
+
+    <h1 class="display-5 fw-bold">Trade Booking Ops</h1>
+
+    <p class="lead text-muted mt-4">
+      Real-time trade booking, enrichment validation,
+      and reference data monitoring for institutional workflows.
+    </p>
+
+    <div class="mt-5">
+      <span class="status-pill">
+        <span class="status-dot bg-secondary"></span>
+        Exchange: <strong>NSE</strong>
+      </span>
+
+      <span class="status-pill">
+        <span class="status-dot bg-success"></span>
+        Booking: <strong>ON</strong>
+      </span>
+    </div>
+
+    <!-- LOGIN BUTTON -->
+    <div class="mt-5">
+      <a href="http://localhost:9000/oauth2/authorization/your-client-id"
+         class="btn btn-primary btn-login">
+        Login Securely
+      </a>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+body {
+      background: #f4f6f9;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    .hero-section {
+      background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+      border-radius: 28px;
+      padding: 70px;
+      margin-top: 60px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    }
+
+    .status-pill {
+      background: rgba(255,255,255,0.7);
+      padding: 12px 20px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .login-card {
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      padding: 45px;
+      background: #ffffff;
+    }
+
+    .btn-primary {
+      border-radius: 14px;
+      padding: 12px;
+      font-weight: 500;
+    }
+
+    .app-title {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }

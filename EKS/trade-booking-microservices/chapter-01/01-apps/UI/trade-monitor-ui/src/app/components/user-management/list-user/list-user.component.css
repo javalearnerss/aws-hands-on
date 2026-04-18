@@ -1,0 +1,28 @@
+.users-table {
+
+ width:100%;
+ border-collapse: collapse;
+
+}
+
+.users-table th,
+.users-table td {
+
+ padding:12px;
+ border-bottom:1px solid #eee;
+
+}
+
+.enabled {
+
+ color:green;
+ font-weight:600;
+
+}
+
+button {
+
+ margin-right:8px;
+ padding:6px 10px;
+
+}
