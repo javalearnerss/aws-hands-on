@@ -1,0 +1,14 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trading-api-gateway-config-map-aws
+  namespace: trading-dev-aws
+
+data:
+  CORS_ALLOWED_ORIGIN: https://localhost:4200
+  EXCHANGE_SERVICE_URL: https://exchange-service-aws:8080
+  TRADE_ENRICHER_SERVICE_URL: https://trade-enricher-service-aws:8080
+  TRADE_PROCESSOR_SERVICE: https://trade-processor-service-aws:8080
+  REF_DATA_PROVIDER_SERVICE: https://refdata-provider-service-aws:8080
+  SERVER_PORT: 8080

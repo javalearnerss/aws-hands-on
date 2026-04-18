@@ -1,0 +1,19 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: refdata-provider-service-aws
+  namespace: trading-dev-aws
+  labels:
+    app: refdata-provider-service-aws
+    version: v1
+    
+spec:
+  type: ClusterIP
+  selector: 
+    app: refdata-provider-aws
+    version: v1
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 9063

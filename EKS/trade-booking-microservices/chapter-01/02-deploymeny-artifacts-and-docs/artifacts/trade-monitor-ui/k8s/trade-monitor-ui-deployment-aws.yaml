@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trade-monitor-ui-deployment-aws
+  namespace: trading-dev-aws
+  labels:
+    app: trade-monitor-ui-deployment-aws
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: trade-monitor-ui-aws
+  template:
+    metadata:
+      labels:
+        app: trade-monitor-ui-aws
+    spec:
+      containers:
+        - name: trade-monitor-ui
+          image: trade-monitor-ui:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 20
+
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10

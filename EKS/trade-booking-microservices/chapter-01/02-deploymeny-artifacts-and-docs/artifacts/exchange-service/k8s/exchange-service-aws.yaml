@@ -1,0 +1,19 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: exchange-service-aws
+  namespace: trading-dev-aws
+  labels:
+    app: exchange-service-aws
+    version: v1
+    
+spec:
+  type: ClusterIP
+  selector: 
+    app: exchange-aws
+    version: v1
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 9061

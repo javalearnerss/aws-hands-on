@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: trading-ingress
+  namespace: trading-dev-aws
+  annotations:
+
+    # ALB setup
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+
+    # Health check (important)
+    alb.ingress.kubernetes.io/healthcheck-path: /
+
+    # Listener (HTTP only since you're testing)
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+
+spec:
+  ingressClassName: alb
+  rules:
+    - host: javalearners.in
+      http:
+        paths:
+          - path: /api/v1
+            pathType: Prefix
+            backend:
+              service:
+                name: trading-api-gateway-service-aws
+                port:
+                  number: 8080   
+
+      # 🔹 Angular App (Frontend)
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: trade-monitor-ui-service-aws
+                port:
+                  number: 80

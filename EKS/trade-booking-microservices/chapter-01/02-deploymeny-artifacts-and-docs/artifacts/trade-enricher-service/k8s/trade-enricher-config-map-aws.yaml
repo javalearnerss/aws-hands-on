@@ -1,0 +1,13 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: trade-enricher-config-map-aws
+  namespace: trading-dev-aws
+  
+data:
+  SERVER_PORT: 9062
+  EXCHANGE_MSG_PRODUCER_TOPIC: nse.trade.events
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: localhost:9092
+  CONSUMER_TRADE_ENRICHER_TOPIC: nse.trade.events
+  PRODUCER_TRADE_ENRICHER_TOPIC: nse.enriched.trade.events

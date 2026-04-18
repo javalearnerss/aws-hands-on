@@ -1,0 +1,9 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: refdata-provider-config-map-aws
+  namespace: trading-dev-aws
+  
+data:
+  LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_SECURITY: INFO
