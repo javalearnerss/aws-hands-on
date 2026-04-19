@@ -26,7 +26,6 @@ public class KafkaProducerConfig {
         Map<String, Object> properties = new HashMap<>(kafkaProperties.buildConsumerProperties());
 
         // ===== EXISTING =====
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, producerProps.getBootstrapServers());
         properties.put(ProducerConfig.BATCH_SIZE_CONFIG, producerProps.getBatchSize());
         properties.put(ProducerConfig.LINGER_MS_CONFIG, producerProps.getLingerMs());
         properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, producerProps.getKeySerializer());
