@@ -1,0 +1,12 @@
+
+
+1. Display only last three folders in path in cmd
+
+    function prompt {
+        $path = (Get-Location).Path -split '\\'
+        $shortPath = $path[-3..-1] -join '\'
+        "PS $shortPath> "
+    }
+
+--------------------------------------------------------------
+
