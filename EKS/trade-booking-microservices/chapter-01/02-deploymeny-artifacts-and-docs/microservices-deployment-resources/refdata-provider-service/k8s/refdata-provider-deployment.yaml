@@ -65,7 +65,7 @@ spec:
               path: "/actuator/health/readiness"  # Spring Boot readiness endpoint
               port: 9063
               scheme: HTTP
-            initialDelaySeconds: 60         # Wait 30s before first probe
+            initialDelaySeconds: 30         # Wait 30s before first probe
             periodSeconds: 5                # Probe every 5 seconds
             timeoutSeconds: 5               # Wait 5s for response
             failureThreshold: 5             # Mark pod not ready after 5 failures
@@ -75,7 +75,7 @@ spec:
               path: "/actuator/health/liveness"  # Spring Boot liveness endpoint
               port: 9063
               scheme: HTTP
-            initialDelaySeconds: 60
+            initialDelaySeconds: 30
             periodSeconds: 5
             timeoutSeconds: 5
             failureThreshold: 5

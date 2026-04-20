@@ -6,7 +6,7 @@ metadata:
   namespace: trading-dev
   
 data:
-  SERVER_PORT: 9062
+  SERVER_PORT: "9062"
   SPRING_KAFKA_BOOTSTRAP_SERVERS: host.docker.internal:9092
   CONSUMER_TRADE_ENRICHER_TOPIC: nse.trade.events
   PRODUCER_TRADE_ENRICHER_TOPIC: nse.enriched.trade.events
