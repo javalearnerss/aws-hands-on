@@ -10,3 +10,8 @@
 
 --------------------------------------------------------------
 
+2. Rollout deployment after config map is updated
+    kubectl rollout restart deployment trade-monitor-ui -n trading-dev
+
+3. Inspect a pod
+    kubectl exec -it trade-monitor-ui-7c7c775c77-98bhs -n trading-dev -- sh

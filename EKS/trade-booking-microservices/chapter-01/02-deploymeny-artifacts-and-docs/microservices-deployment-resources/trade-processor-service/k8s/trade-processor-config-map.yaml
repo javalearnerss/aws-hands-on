@@ -9,3 +9,4 @@ data:
   SERVER_PORT: "9060"
   SPRING_KAFKA_BOOTSTRAP_SERVERS: host.docker.internal:9092
   CONSUMER_TRADE_PROCESSOR_TOPIC: nse.enriched.trade.events
+  REFDATA_PROVIDER_URL: http://refdata-provider:8080

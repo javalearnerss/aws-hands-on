@@ -1,5 +1,7 @@
-
-FROM node:18 AS build
 FROM nginx:alpine
-COPY --from=build /libs/trade-monitor-ui /usr/share/nginx/html
+
+# Copy Angular build output
+COPY dist/trade-monitor-ui/browser /usr/share/nginx/html
+
+# Nginx config for routing
 COPY nginx.conf /etc/nginx/conf.d/default.conf

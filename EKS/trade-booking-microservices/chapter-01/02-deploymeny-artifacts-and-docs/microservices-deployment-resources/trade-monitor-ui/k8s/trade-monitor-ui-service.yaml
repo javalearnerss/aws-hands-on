@@ -9,6 +9,7 @@ metadata:
 
 spec:
   type: LoadBalancer
+
   selector:
     app: trade-monitor-ui
     version: v1
@@ -16,4 +17,4 @@ spec:
   ports:
     - name: http
       port: 4200
-      targetPort: 4200
+      targetPort: 80
