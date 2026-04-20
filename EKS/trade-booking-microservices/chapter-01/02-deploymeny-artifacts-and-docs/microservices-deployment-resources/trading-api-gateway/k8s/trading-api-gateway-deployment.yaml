@@ -28,6 +28,8 @@ spec:
         app: trading-api-gateway
         version: v1
 
+    spec:
+
       terminationGracePeriodSeconds: 30
 
       securityContext:
