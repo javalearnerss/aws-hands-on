@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trade-monitor-ui
+  namespace: trading-dev
+  labels:
+    app: trade-monitor-ui
+    version: v1
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+
+  selector:
+    matchLabels:
+      app: trade-monitor-ui
+      version: v1
+
+  template:
+    metadata:
+      labels:
+        app: trade-monitor-ui
+        version: v1
+
+    spec:
+      terminationGracePeriodSeconds: 30
+
+      # 🔥 Run as root (simple & works locally with nginx)
+      securityContext:
+        runAsUser: 0
+
+      containers:
+        - name: trade-monitor-ui-container
+          image: trade-monitor-ui:v1
+          imagePullPolicy: IfNotPresent
+
+          ports:
+            - name: http
+              containerPort: 80
+
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+
+          readinessProbe:
+            httpGet:
+              path: "/"
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+
+          livenessProbe:
+            httpGet:
+              path: "/"
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3

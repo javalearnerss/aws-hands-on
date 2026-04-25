@@ -1,0 +1,15 @@
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: exchange-config-map
+  namespace: trading-dev
+  
+data:
+  SPRING_KAFKA_BOOTSTRAP_SERVERS: boot-hutnujf4.c3.kafka-serverless.ap-south-1.amazonaws.com:9098
+  SERVER_PORT: "9061"
+  EXCHANGE_MSG_PRODUCER_TOPIC: nse.trade.events
+  SPRING_KAFKA_PROPERTIES_SECURITY_PROTOCOL: "SASL_SSL"
+  SPRING_KAFKA_PROPERTIES_SASL_MECHANISM: "AWS_MSK_IAM"
+  SPRING_KAFKA_PROPERTIES_SASL_JAAS_CONFIG: "software.amazon.msk.auth.iam.IAMLoginModule required;"
+  SPRING_KAFKA_PROPERTIES_SASL_CLIENT_CALLBACK_HANDLER_CLASS: "software.amazon.msk.auth.iam.IAMClientCallbackHandler"

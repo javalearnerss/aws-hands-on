@@ -1,0 +1,55 @@
+<!-- Header -->
+<!-- Header -->
+<div class="p-4 rounded-4" style="background: linear-gradient(135deg,#cfd4ff,#c8e6c9);">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+        <!-- LEFT CONTENT -->
+        <div>
+            <h1 class="fw-bold mb-2">Trade Booking Ops</h1>
+            <p class="mb-3 text-muted">
+                Book trades, monitor pipeline health, and validate reference lookups.
+            </p>
+
+            <div class="d-flex gap-3">
+                <div class="badge bg-light text-dark px-3 py-2 rounded-pill">
+                    Exchange: <strong class="ms-1">NSE</strong>
+                </div>
+
+                <div class="badge bg-light text-dark px-3 py-2 rounded-pill">
+                    Booking: <strong class="ms-1 text-success">ON</strong>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT -->
+
+
+    </div>
+</div>
+
+<!-- Tabs -->
+<nav class="tabs" aria-label="Primary navigation">
+    <a routerLink="/ops-dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="tab">
+        Dashboard
+    </a>
+
+    <a routerLink="/exchange" routerLinkActive="active" class="tab">
+        Live Feed
+    </a>
+
+    <a routerLink="/trade-enricher" routerLinkActive="active" class="tab">
+        Enricher
+    </a>
+
+    <a routerLink="/trade-processor" routerLinkActive="active" class="tab">
+        Processor
+    </a>
+
+    <a routerLink="/refdata-provider" routerLinkActive="active" class="tab">
+        Reference Data
+    </a>
+
+
+</nav>

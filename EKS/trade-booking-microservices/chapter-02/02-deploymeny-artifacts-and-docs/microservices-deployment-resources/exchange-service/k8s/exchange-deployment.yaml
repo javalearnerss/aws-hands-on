@@ -1,0 +1,93 @@
+apiVersion: apps/v1                 # API version used for Deployment resources
+kind: Deployment                    # Kubernetes resource type
+metadata:
+  name: exchange                    # Name of the deployment
+  namespace: trading-dev            # Namespace where this deployment will run
+  labels:
+    app: exchange                   # Labels used to identify this deployment
+    version: v1                     # Version label (useful for rolling updates)
+
+spec:
+  replicas: 1                     # Number of pod replicas to maintain
+
+  strategy:                         # Deployment update strategy
+    type: RollingUpdate             # Rolling update ensures zero downtime
+    rollingUpdate:
+      maxUnavailable: 0             # Max pods unavailable during update
+      maxSurge: 1                   # Extra pods allowed during update
+
+  selector:                         # Deployment selects pods using labels
+    matchLabels:                    # These labels must match pod template labels
+      app: exchange
+      version: v1
+
+  template:                         # Template used to create Pods
+    metadata:
+      labels:                       # Labels applied to created Pods
+        app: exchange
+        version: v1
+
+    spec:                           # Pod specification
+    
+      serviceAccountName: exchange-service-sa
+
+      terminationGracePeriodSeconds: 30   # Time given for graceful shutdown
+
+      securityContext:              # Security settings for the pod
+        runAsNonRoot: true          # Ensures container does not run as root
+        runAsUser: 1000             # Runs container with user ID 1000
+
+      containers:
+        - name: exchange-container  # Container name
+          image: 336042380202.dkr.ecr.us-east-1.amazonaws.com/trading-dev/exchange:v1        # Docker image used for the container
+          imagePullPolicy: IfNotPresent           # Always pull image from registry
+          
+          ports:
+            - name: http                    # Name of the port
+              containerPort: 9061           # Application port inside container
+
+          env:
+            - name: SERVICE_NAME
+              value: exchange
+                        
+          envFrom:
+            - configMapRef:
+                name: exchange-config-map
+            
+           
+          resources:                        # Resource management
+            requests:                       # Minimum resources Kubernetes guarantees
+              memory: "256Mi"
+              cpu: "250m"
+            limits:                         # Maximum resources container can use
+              memory: "512Mi"
+              cpu: "500m"
+
+          readinessProbe:                   # Checks if pod is ready to serve traffic
+            httpGet:
+              path: "/actuator/health/readiness"  # Spring Boot readiness endpoint
+              port: 9061
+              scheme: HTTP
+            initialDelaySeconds: 30         # Wait 30s before first probe
+            periodSeconds: 5                # Probe every 5 seconds
+            timeoutSeconds: 5               # Wait 5s for response
+            failureThreshold: 5             # Mark pod not ready after 5 failures
+
+          livenessProbe:                    # Checks if container is alive
+            httpGet:
+              path: "/actuator/health/liveness"  # Spring Boot liveness endpoint
+              port: 9061
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 5
+
+          startupProbe:                     # Used for slow-starting applications
+            httpGet:
+              path: "/actuator/health"      # General health endpoint
+              port: 9061
+              scheme: HTTP
+            initialDelaySeconds: 30        # Delay before startup probe begins
+            periodSeconds: 10               # Probe every 10 seconds
+            failureThreshold: 10            # Container restart after 10 failures

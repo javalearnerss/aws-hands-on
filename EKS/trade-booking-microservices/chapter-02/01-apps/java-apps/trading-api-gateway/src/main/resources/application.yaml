@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: trading-api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+
+          routes:
+
+          # PUBLIC API → EXCHANGE SERVICE
+          - id: trades-api
+            uri: ${EXCHANGE_SERVICE_URL:http://127.0.0.1:9061}
+            predicates:
+              - Path=/api/v1/trades/**
+            filters:
+              - RewritePath=/api/v1/trades/(?<segment>.*), /exchange/${segment}
+
+          # PUBLIC API → ENRICHER
+          - id: trades-enricher-api
+            uri: ${TRADE_ENRICHER_SERVICE_URL:http://127.0.0.1:9062}
+            predicates:
+              - Path=/api/v1/enrichment/**
+            filters:
+              - RewritePath=/api/v1/enrichment/(?<segment>.*), /trade-enricher/${segment}
+
+          # PUBLIC API → PROCESSOR
+          - id: trades-processor-api
+            uri: ${TRADE_PROCESSOR_SERVICE:http://127.0.0.1:9060}
+            predicates:
+              - Path=/api/v1/processing/**
+            filters:
+              - RewritePath=/api/v1/processing/(?<segment>.*), /trade-processor/${segment}
+
+          # PUBLIC API → REFERENCE DATA
+          - id: reference-api
+            uri: ${REF_DATA_PROVIDER_SERVICE:http://127.0.0.1:9063}
+            predicates:
+              - Path=/api/v1/reference/**
+            filters:
+              - RewritePath=/api/v1/reference/(?<segment>.*), /reference/${segment}
