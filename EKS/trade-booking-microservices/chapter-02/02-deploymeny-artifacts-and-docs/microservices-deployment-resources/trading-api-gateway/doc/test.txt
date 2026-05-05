@@ -3,3 +3,9 @@ Run a temporary pod
 kubectl run test-pod --rm -it --image=busybox -n trading-dev -- /bin/sh
 
 wget -qO- http://trading-api-gateway:8080/actuator/health
+
+
+wget -qO- http://trading-api-gateway:8080/api/v1/reference/symbol/ASIANPAINT
+
+
+kubectl exec -it trading-api-gateway-6d5984cf6c-6s655 -n trading-dev -- sh

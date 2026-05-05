@@ -36,8 +36,8 @@ spec:
 
       containers:
         - name: refdata-provider-container        # Container name
-          image: refdata-provider:v1              # Docker image used for the container
-          imagePullPolicy: IfNotPresent           # Always pull image from registry
+          image: 336042380202.dkr.ecr.ap-south-1.amazonaws.com/trading-dev/refdata-provider:v2             # Docker image used for the container
+          imagePullPolicy: IfNotPresent           
           
           ports:
             - name: http                    # Name of the port

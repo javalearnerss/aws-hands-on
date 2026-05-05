@@ -30,14 +30,13 @@ spec:
     spec:
       terminationGracePeriodSeconds: 30
 
-      # 🔥 Run as root (simple & works locally with nginx)
       securityContext:
         runAsUser: 0
 
       containers:
         - name: trade-monitor-ui-container
-          image: trade-monitor-ui:v1
-          imagePullPolicy: IfNotPresent
+          image: 336042380202.dkr.ecr.ap-south-1.amazonaws.com/trading-dev/trade-monitor-ui:v2
+          imagePullPolicy: Always
 
           ports:
             - name: http

@@ -6,7 +6,7 @@ metadata:
   namespace: trading-dev
 
 data:
-  CORS_ALLOWED_ORIGIN: http://localhost:4200
+  APP_CORS_ALLOWED_ORIGINS: http://localhost:4200
   EXCHANGE_SERVICE_URL: http://exchange:8080
   TRADE_ENRICHER_SERVICE_URL: http://trade-enricher:8080
   TRADE_PROCESSOR_SERVICE: http://trade-processor:8080

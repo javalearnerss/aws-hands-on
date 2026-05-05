@@ -3,3 +3,8 @@ Run a temporary pod
 kubectl run test-pod --rm -it --image=busybox -n trading-dev -- /bin/sh
 
 wget -qO- http://refdata-provider:8080/actuator/health
+
+wget -qO- http://refdata-provider:8080/reference/symbol/ASIANPAINT
+
+
+kubectl exec -it refdata-provider-84d998c8b5-4zk6k -n trading-dev -- sh

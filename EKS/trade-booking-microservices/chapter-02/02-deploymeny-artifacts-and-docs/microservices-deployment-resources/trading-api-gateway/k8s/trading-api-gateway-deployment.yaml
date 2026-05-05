@@ -38,7 +38,7 @@ spec:
 
       containers:
         - name: trading-api-gateway-container
-          image: trading-api-gateway:v1
+          image: 336042380202.dkr.ecr.ap-south-1.amazonaws.com/trading-dev/trading-api-gateway:v1
           imagePullPolicy: IfNotPresent
 
           ports:
