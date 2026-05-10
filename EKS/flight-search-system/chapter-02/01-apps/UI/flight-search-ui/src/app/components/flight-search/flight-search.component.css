@@ -1,0 +1,514 @@
+body {
+
+  background: #f8fafc;
+
+  font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+  color: #0f172a;
+}
+
+/* ===================================== */
+/* CONTAINER */
+/* ===================================== */
+
+.container {
+
+  max-width: 1280px;
+}
+
+/* ===================================== */
+/* SEARCH TOOLBAR */
+/* ===================================== */
+
+.search-toolbar {
+
+  background: white;
+
+  border-radius: 16px;
+
+  padding:
+    16px 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  border:
+    1px solid #e2e8f0;
+
+  margin-bottom: 28px;
+}
+
+.search-brand {
+
+  font-size: 1.2rem;
+
+  font-weight: 700;
+
+  color: #0f172a;
+
+  white-space: nowrap;
+}
+
+.search-fields {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr
+    120px
+    120px;
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+/* ===================================== */
+/* FORM */
+/* ===================================== */
+
+.form-control {
+
+  height: 42px;
+
+  border-radius: 10px;
+
+  border: 1px solid #dbeafe;
+
+  font-size: 0.9rem;
+
+  padding: 8px 12px;
+}
+
+.form-control:focus {
+
+  box-shadow: none;
+
+  border-color: #2563eb;
+}
+
+/* ===================================== */
+/* BUTTONS */
+/* ===================================== */
+
+.btn-search {
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 10px;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+}
+
+.btn-search:hover {
+
+  background: #1d4ed8;
+
+  color: white;
+}
+
+.btn-book {
+
+  background: #16a34a;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  padding:
+    8px 18px;
+}
+
+.btn-book:hover {
+
+  background: #15803d;
+
+  color: white;
+}
+
+/* ===================================== */
+/* EMPTY STATE */
+/* ===================================== */
+
+.empty-state {
+
+  text-align: center;
+
+  padding:
+    80px 20px;
+}
+
+.empty-title {
+
+  font-size: 1.4rem;
+
+  font-weight: 700;
+
+  margin-bottom: 8px;
+}
+
+.empty-subtitle {
+
+  color: #64748b;
+
+  font-size: 0.95rem;
+}
+
+/* ===================================== */
+/* LOADING */
+/* ===================================== */
+
+.loading-section {
+
+  text-align: center;
+
+  padding:
+    60px 20px;
+}
+
+.loading-text {
+
+  margin-top: 14px;
+
+  font-weight: 600;
+}
+
+/* ===================================== */
+/* SECTION HEADERS */
+/* ===================================== */
+
+.section-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.section-title {
+
+  font-size: 2rem;
+
+  font-weight: 700;
+
+  margin-bottom: 2px;
+}
+
+.section-subtitle {
+
+  font-size: 0.9rem;
+
+  color: #64748b;
+}
+
+.results-badge {
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 0.8rem;
+
+  font-weight: 600;
+
+  padding:
+    6px 12px;
+
+  border-radius: 999px;
+}
+
+/* ===================================== */
+/* FLIGHT CARD */
+/* ===================================== */
+
+.flight-card {
+
+  background: white;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  padding:
+    20px 24px;
+
+  margin-bottom: 16px;
+
+  transition: 0.2s ease;
+}
+
+.flight-card:hover {
+
+  border-color: #cbd5e1;
+
+  box-shadow:
+    0 10px 24px rgba(15,23,42,0.06);
+}
+
+.flight-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1.2fr
+    2fr
+    1fr
+    1fr
+    120px;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+/* ===================================== */
+/* FLIGHT INFO */
+/* ===================================== */
+
+.flight-number {
+
+  font-size: 1rem;
+
+  font-weight: 700;
+
+  margin-bottom: 2px;
+}
+
+.flight-airline {
+
+  color: #64748b;
+
+  font-size: 0.82rem;
+}
+
+.route-section {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+.route-line {
+
+  color: #2563eb;
+
+  font-size: 0.85rem;
+}
+
+.flight-time {
+
+  font-size: 1.15rem;
+
+  font-weight: 700;
+}
+
+.flight-label {
+
+  font-size: 0.78rem;
+
+  color: #64748b;
+}
+
+.seat-count {
+
+  font-size: 1.15rem;
+
+  font-weight: 700;
+
+  color: #dc2626;
+}
+
+.price {
+
+  font-size: 1.3rem;
+
+  font-weight: 700;
+
+  color: #16a34a;
+}
+
+/* ===================================== */
+/* ANALYTICS */
+/* ===================================== */
+
+.analytics-section {
+
+  margin-top: 40px;
+}
+
+.analytics-title {
+
+  font-size: 1.15rem;
+
+  font-weight: 700;
+
+  margin-bottom: 2px;
+}
+
+.analytics-subtitle {
+
+  font-size: 0.82rem;
+
+  color: #64748b;
+}
+
+.analytics-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1.2fr;
+
+  gap: 16px;
+}
+
+.analytics-card {
+
+  background: white;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  padding: 18px;
+
+  transition: 0.2s ease;
+}
+
+.analytics-card:hover {
+
+  box-shadow:
+    0 8px 20px rgba(15,23,42,0.05);
+}
+
+.analytics-top {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+.analytics-value {
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+
+  margin:
+    14px 0 6px;
+}
+
+.analytics-footer {
+
+  font-size: 0.8rem;
+
+  color: #64748b;
+}
+
+/* ===================================== */
+/* ROUTES */
+/* ===================================== */
+
+.routes-list {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.route-item {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  background: #f8fafc;
+
+  border-radius: 10px;
+
+  padding:
+    10px 12px;
+
+  font-size: 0.85rem;
+}
+
+.route-count {
+
+  color: #2563eb;
+
+  font-weight: 700;
+}
+
+/* ===================================== */
+/* RESPONSIVE */
+/* ===================================== */
+
+@media (max-width: 992px) {
+
+  .search-toolbar {
+
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+  .search-fields {
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .flight-grid {
+
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .analytics-grid {
+
+    grid-template-columns: 1fr;
+  }
+}

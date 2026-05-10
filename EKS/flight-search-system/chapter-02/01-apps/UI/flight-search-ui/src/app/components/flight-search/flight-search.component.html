@@ -1,0 +1,461 @@
+<div class="container py-4">
+
+  <!-- ===================================== -->
+  <!-- SEARCH TOOLBAR -->
+  <!-- ===================================== -->
+
+  <form
+    class="search-toolbar shadow-sm"
+    (ngSubmit)="searchFlights($event)">
+
+    <div class="search-brand">
+
+      ✈ SkyStream
+
+    </div>
+
+    <div class="search-fields">
+
+      <!-- FROM -->
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="From"
+        [(ngModel)]="searchRequest.from"
+        name="from">
+
+      <!-- TO -->
+
+      <input
+        type="text"
+        class="form-control"
+        placeholder="To"
+        [(ngModel)]="searchRequest.to"
+        name="to">
+
+      <!-- DATE -->
+
+      <input
+        type="date"
+        class="form-control"
+        [(ngModel)]="searchRequest.travelDate"
+        name="travelDate">
+
+      <!-- TRAVELERS -->
+
+      <input
+        type="number"
+        class="form-control"
+        min="1"
+        placeholder="Travelers"
+        [(ngModel)]="searchRequest.travelerCount"
+        name="travelerCount">
+
+      <!-- BUTTON -->
+
+      <button
+        type="submit"
+        class="btn btn-search">
+
+        Search
+
+      </button>
+
+    </div>
+
+  </form>
+
+  <!-- ===================================== -->
+  <!-- LOADING -->
+  <!-- ===================================== -->
+
+  <div
+    [hidden]="!loading"
+    class="loading-section">
+
+    <div
+      class="spinner-border text-primary">
+
+    </div>
+
+    <div class="loading-text">
+
+      Searching best flights...
+
+    </div>
+
+  </div>
+
+  <!-- ===================================== -->
+  <!-- EMPTY / NO RESULTS -->
+  <!-- ===================================== -->
+
+  <div
+    [hidden]="loading || flights.length > 0"
+    class="empty-state">
+
+    <!-- INITIAL STATE -->
+
+    <ng-container *ngIf="dashboard?.totalSearches === 0">
+
+      <div class="empty-title">
+
+        Search flights to begin your journey
+
+      </div>
+
+      <div class="empty-subtitle">
+
+        Find the best routes and prices instantly
+
+      </div>
+
+    </ng-container>
+
+    <!-- NO FLIGHTS FOUND -->
+
+    <ng-container *ngIf="dashboard?.totalSearches! > 0">
+
+      <div class="empty-icon">
+
+        ✈
+
+      </div>
+
+      <div class="empty-title">
+
+        No flights found
+
+      </div>
+
+      <div class="empty-subtitle">
+
+        We could not find flights for your search criteria
+
+      </div>
+
+      <div class="empty-hint">
+
+        Try changing destination, date,
+        or traveler count
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <!-- ===================================== -->
+  <!-- FLIGHT RESULTS -->
+  <!-- ===================================== -->
+
+  <div [hidden]="flights.length === 0">
+
+    <!-- HEADER -->
+
+    <div class="section-header">
+
+      <div>
+
+        <h2 class="section-title">
+
+          Available Flights
+
+        </h2>
+
+        <div class="section-subtitle">
+
+          Best matching flights
+
+        </div>
+
+      </div>
+
+      <div class="results-badge">
+
+        {{ flights.length }} Flights
+
+      </div>
+
+    </div>
+
+    <!-- FLIGHT CARD -->
+
+    <div
+      *ngFor="
+        let flight of flights;
+        trackBy: trackByFlight
+      "
+      class="flight-card">
+
+      <div class="flight-grid">
+
+        <!-- AIRLINE -->
+
+        <div>
+
+          <div class="flight-number">
+
+            {{ flight.flightNo }}
+
+          </div>
+
+          <div class="flight-airline">
+
+            SkyStream Airways
+
+          </div>
+
+        </div>
+
+        <!-- ROUTE -->
+
+        <div class="route-section">
+
+          <div>
+
+            <div class="flight-time">
+
+              {{ flight.departure }}
+
+            </div>
+
+            <div class="flight-label">
+
+              Departure
+
+            </div>
+
+          </div>
+
+          <div class="route-line">
+
+            ─────✈─────
+
+          </div>
+
+          <div>
+
+            <div class="flight-time">
+
+              {{ flight.arrival }}
+
+            </div>
+
+            <div class="flight-label">
+
+              Arrival
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SEATS -->
+
+        <div class="text-center">
+
+          <div class="seat-count">
+
+            {{ flight.availableSeats }}
+
+          </div>
+
+          <div class="flight-label">
+
+            Seats Left
+
+          </div>
+
+        </div>
+
+        <!-- PRICE -->
+
+        <div class="text-center">
+
+          <div class="price">
+
+            ₹ {{ flight.price }}
+
+          </div>
+
+          <div class="flight-label">
+
+            Economy
+
+          </div>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <div class="text-end">
+
+          <button
+            type="button"
+            class="btn btn-book">
+
+            Book
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================== -->
+  <!-- ANALYTICS -->
+  <!-- ===================================== -->
+
+  <div
+    [hidden]="!dashboard || dashboard.totalSearches === 0"
+    class="analytics-section">
+
+    <div class="section-header mb-3">
+
+      <div>
+
+        <h3 class="analytics-title">
+
+          Live Search Insights
+
+        </h3>
+
+        <div class="analytics-subtitle">
+
+          Real-time analytics powered by Kafka
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="analytics-grid">
+
+      <!-- SEARCHES -->
+
+      <div class="analytics-card">
+
+        <div class="analytics-top">
+
+          <span>
+
+            Total Searches
+
+          </span>
+
+          <span>
+
+            🔍
+
+          </span>
+
+        </div>
+
+        <div class="analytics-value">
+
+          {{ dashboard?.totalSearches }}
+
+        </div>
+
+        <div class="analytics-footer">
+
+          Live Kafka events
+
+        </div>
+
+      </div>
+
+      <!-- TRAVELERS -->
+
+      <div class="analytics-card">
+
+        <div class="analytics-top">
+
+          <span>
+
+            Travelers
+
+          </span>
+
+          <span>
+
+            👥
+
+          </span>
+
+        </div>
+
+        <div class="analytics-value">
+
+          {{ dashboard?.totalTravelers }}
+
+        </div>
+
+        <div class="analytics-footer">
+
+          Across all routes
+
+        </div>
+
+      </div>
+
+      <!-- ROUTES -->
+
+      <div class="analytics-card">
+
+        <div class="analytics-top mb-3">
+
+          <span>
+
+            Trending Routes
+
+          </span>
+
+          <span>
+
+            🌍
+
+          </span>
+
+        </div>
+
+        <div class="routes-list">
+
+          <div
+            *ngFor="
+              let route
+              of dashboard?.popularRoutes | keyvalue
+            "
+            class="route-item">
+
+            <span>
+
+              {{ route.key }}
+
+            </span>
+
+            <span class="route-count">
+
+              {{ route.value }}
+
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

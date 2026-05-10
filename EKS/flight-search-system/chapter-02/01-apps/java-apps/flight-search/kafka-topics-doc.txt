@@ -1,0 +1,30 @@
+
+
+.\bin\windows\kafka-storage.bat random-uuid
+
+.\bin\windows\kafka-storage.bat format -t VPpPyigJSL-0O9RYuGURCw -c .\config\kraft\server.properties
+
+
+
+# Start Kafka Server
+.\bin\windows\kafka-server-start.bat .\config\kraft\server.properties
+
+# Create Kafka Topic
+# Main topic
+.\bin\windows\kafka-topics.bat --create --topic flight-search-events --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+# Dlt Topic
+.\bin\windows\kafka-topics.bat --create --topic flight-search-events-dlt --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+# Create Kafka Console consumer
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic nse.trade.events --group flight-search-consumer-group --consumer-property client.id=consumer-console-1
+
+# List all the topics
+.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+
+.\bin\windows\kafka-topics.bat --create --topic flight-search-events --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+.\bin\windows\kafka-topics.bat --create --topic flight-search-events-dlt --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+
+
